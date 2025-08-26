@@ -1,0 +1,96 @@
+<!-- /public/views/dashboard.html -->
+
+<section class="dash-wrap" role="region" aria-labelledby="dash-title">
+  <!-- Encabezado + logout -->
+  <div class="card" role="region" aria-label="Bienvenida">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+      <div>
+        <h3 id="dash-title" style="display:flex; align-items:center; gap:10px; margin:0 0 6px;">
+          <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+          Hola, <span id="user-name">Estudiante</span> 👋
+        </h3>
+        <p class="muted" style="margin:0">
+          Bienvenido a tu panel. Pronto verás tus clases, metas y logros.
+        </p>
+      </div>
+      <button id="logout-btn" class="btn" title="Cerrar sesión">
+        <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+        Cerrar sesión
+      </button>
+    </div>
+  </div>
+
+  <!-- Métricas rápidas -->
+  <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:16px;">
+    <div class="card" role="status" aria-live="polite">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+        <div>
+          <div style="font-weight:700;">Próximos eventos</div>
+          <div class="muted" id="metric-events">Sincroniza tu calendario</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" role="status" aria-live="polite">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+        <div>
+          <div style="font-weight:700;">Tareas activas</div>
+          <div class="muted" id="metric-tasks">Gestiona tus pendientes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" role="status" aria-live="polite">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <i class="fa-solid fa-note-sticky" aria-hidden="true"></i>
+        <div>
+          <div style="font-weight:700;">Notas recientes</div>
+          <div class="muted" id="metric-notes">Crea tu primera nota</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" role="status" aria-live="polite">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <i class="fa-solid fa-fire" aria-hidden="true"></i>
+        <div>
+          <div style="font-weight:700;">Racha de estudio</div>
+          <div class="muted" id="metric-streak">Comienza hoy 🚀</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accesos rápidos a todas las secciones -->
+  <div class="card" role="region" aria-label="Accesos rápidos">
+    <h3 style="margin-top:0; margin-bottom:10px;">Accesos rápidos</h3>
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+      <a class="btn btn-secondary nav-link" href="#/tareas" title="Ir a Tareas">
+        <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+        Tareas
+      </a>
+      <a class="btn btn-secondary nav-link" href="#/calendario" title="Ir al Calendario">
+        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+        Calendario
+      </a>
+      <a class="btn btn-secondary nav-link" href="#/notas" title="Ir a Notas">
+        <i class="fa-solid fa-note-sticky" aria-hidden="true"></i>
+        Notas
+      </a>
+      <a class="btn btn-secondary nav-link" href="#/archivos" title="Ir a Archivos">
+        <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+        Archivos
+      </a>
+      <a class="btn btn-secondary nav-link" href="#/pizarra" title="Ir a Pizarra">
+        <i class="fa-solid fa-chalkboard" aria-hidden="true"></i>
+        Pizarra
+      </a>
+      <a class="btn btn-secondary nav-link" href="#/perfil" title="Ir a Perfil">
+        <i class="fa-solid fa-user" aria-hidden="true"></i>
+        Perfil
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrudCenter - Notas</title>
+</head>
+<body>
+    <h2>Mis Notas</h2>
+    <button id="addNote">Crear Nota</button>
+    <div id="myNotes">
+        
+    </div>
+    <dialog id="createNoteMod">
+        <form id="createNote">
+            <label for="noteTitle">Titulo</label>
+            <input type="text" id="noteTitle">
+            <label for="noteBody">Nota</label>
+            <textarea name="noteBody" id="noteBody"></textarea>
+            <button type="submit">Guardar</button>
+            <button type="button" id="closeNote">Cerrar</button>
+        </form>
+    </dialog>
+    <dialog id="editNoteMod">
+        <form id="editNote">
+            <label for="editNoteTitle">Titulo</label>
+            <input type="text" id="editNoteTitle">
+            <label for="editNoteBody">Nota</label>
+            <textarea name="editNoteBody" id="editNoteBody"></textarea>
+            <button type="submit">Guardar</button>
+            <button type="button" id="closeNote1">Cerrar</button>
+        </form>
+    </dialog>
+
+
+
+    <script src="notes.js"></script>
+</body>
+</html>

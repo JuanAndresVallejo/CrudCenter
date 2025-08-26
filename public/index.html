@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Center — Tu espacio de estudio</title>
+  <meta name="description" content="Center - Plataforma para seguimiento de estudios, autoaprendizajes y logros." />
+  <meta name="theme-color" content="#67b99aff" />
+
+  <!-- CSS unificado -->
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+
+  <!-- Tipografía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (global para todas las vistas) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" referrerpolicy="no-referrer">
+</head>
+<body>
+  <!-- Accesibilidad: salto directo al contenido -->
+  <a href="#main" class="sr-only">Saltar al contenido principal</a>
+
+  <!-- Header (se usa también en login/registro legacy) -->
+  <header class="app-header" role="banner" aria-label="Encabezado">
+    <div class="brand" aria-label="Nombre de la aplicación">CRUD-Center</div>
+  </header>
+
+  <!-- Navbar global (lo muestra/oculta guards.js) -->
+  <nav id="sub-nav" class="sub-nav" aria-label="Secciones" style="display:none;">
+    <a class="btn nav-link" href="#/dashboard"><i class="fa-solid fa-gauge"></i>&nbsp;Dashboard</a>
+    <a class="btn nav-link" href="#/tareas"><i class="fa-solid fa-list-check"></i>&nbsp;Tareas</a>
+    <a class="btn nav-link" href="./views/calendar.html"><i class="fa-solid fa-calendar-days"></i>&nbsp;Calendario</a>
+    <a class="btn nav-link" href="#/notas"><i class="fa-solid fa-note-sticky"></i>&nbsp;Notas</a>
+    <a class="btn nav-link" href="#/archivos"><i class="fa-solid fa-folder-open"></i>&nbsp;Archivos</a>
+    <a class="btn nav-link" href="#/pizarra"><i class="fa-solid fa-chalkboard"></i>&nbsp;Pizarra</a>
+    <a class="btn nav-link" href="#/perfil"><i class="fa-solid fa-user"></i>&nbsp;Perfil</a>
+  </nav>
+
+  <!-- Loader global -->
+  <div id="page-loader" class="loader-overlay" aria-hidden="true">
+    <div class="stingray-loader"></div>
+    <p class="loader-text">Cargando...</p>
+  </div>
+
+  <!-- Contenedor SPA -->
+  <main id="main" class="app-container" role="main" aria-live="polite"></main>
+
+  <!-- JS principal -->
+  <script type="module" src="./assets/js/main.js"></script>
+
+  <noscript>
+    <div style="padding:16px;max-width:1100px;margin:16px auto">
+      Necesitas habilitar JavaScript para usar Center.
+    </div>
+  </noscript>
+</body>
+</html>

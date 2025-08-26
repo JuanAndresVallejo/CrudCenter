@@ -1,0 +1,105 @@
+<section class="auth-wrap" role="region" aria-labelledby="auth-title">
+  <div class="auth-card" id="auth-card" data-mode="login" aria-live="polite">
+    <!-- Intro (lado izquierdo) -->
+    <aside class="auth-hero">
+      <span class="badge eyebrow">Tu WorkSpace de estudio</span>
+      <h1 id="auth-title" class="sr-only">Acceso a Center</h1>
+      <h2>Bienvenido a Center</h2>
+      <p class="intro-copy">
+        Organiza clases, mejora hábitos y convierte metas en resultados. Crea tu cuenta y empieza a construir tu progreso.
+      </p>
+      <ul class="intro-list">
+        <li>Seguimiento por materias</li>
+        <li>Tareas y calendario integrados</li>
+        <li>Notas, archivos y pizarra</li>
+      </ul>
+    </aside>
+
+    <!-- Panel (lado derecho) -->
+    <div class="auth-panel">
+      <div class="auth-overlay" aria-hidden="true"></div>
+
+      <div class="panes">
+        <div class="pane" id="pane-form">
+          <h3 id="form-title">Iniciar sesión</h3>
+
+          <form id="auth-form" novalidate autocomplete="on" aria-describedby="password-help">
+            <!-- Honeypot simple anti-bot -->
+            <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+
+            <!-- Solo registro -->
+            <div id="name-row" class="form-row" style="display:none">
+              <div class="field">
+                <label class="label" for="firstName">Nombre</label>
+                <input id="firstName" class="input" type="text" autocomplete="given-name" inputmode="text" />
+              </div>
+              <div class="field">
+                <label class="label" for="lastName">Apellido</label>
+                <input id="lastName" class="input" type="text" autocomplete="family-name" inputmode="text" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label" for="email">Email</label>
+              <input id="email" class="input" type="email" autocomplete="email" required
+                     inputmode="email" aria-required="true" />
+            </div>
+
+            <div class="field" style="position:relative">
+              <label class="label" for="password">Contraseña</label>
+              <input id="password"
+                     class="input password"
+                     type="password"
+                     autocomplete="current-password"
+                     required minlength="8"
+                     aria-required="true"
+                     aria-describedby="password-help" />
+              <button id="toggle-pass"
+                      class="showpass"
+                      type="button"
+                      aria-label="Mostrar u ocultar contraseña"
+                      aria-pressed="false">Mostrar</button>
+            </div>
+
+            <!-- Confirmar contraseña (solo registro) -->
+            <div id="confirm-row" class="field" style="display:none; position:relative">
+              <label class="label" for="confirm">Confirmar contraseña</label>
+              <input id="confirm"
+                     class="input password"
+                     type="password"
+                     autocomplete="new-password" />
+              <button id="toggle-pass-confirm"
+                      class="showpass"
+                      type="button"
+                      aria-label="Mostrar u ocultar confirmación de contraseña"
+                      aria-pressed="false">Mostrar</button>
+            </div>
+
+            <div class="form-row" style="align-items:center">
+              <label class="helper" for="rememberMe" style="display:flex; align-items:center; gap:8px; cursor:pointer">
+                <input id="rememberMe" type="checkbox" /> Recordarme
+              </label>
+              <span id="password-help" class="helper" style="margin-left:auto">
+                Mínimo 8 caracteres (mayúscula, minúscula y número)
+              </span>
+            </div>
+
+            <div id="auth-error" class="error" role="alert" aria-live="polite"></div>
+            <div id="auth-ok" class="ok" role="status" aria-live="polite"></div>
+
+            <div class="actions">
+              <!-- Nota: el color/estilo de este botón viene del bloque LEGACY AUTH -->
+              <button id="primary-btn" type="submit" class="btn">Iniciar sesión</button>
+              <button id="google-btn" type="button" class="btn google">Continuar con Google</button>
+            </div>
+
+            <p class="helper" style="margin-top:10px">
+              <span id="toggle-text">¿No tienes cuenta?</span>
+              <a href="#" id="toggle-link" aria-controls="auth-card" aria-expanded="false">Regístrate</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,169 @@
+<!-- /public/views/tasks.html -->
+
+<link rel="stylesheet" href="../assets/css/styles.css" data-partial-style />
+
+<!-- Fallback navbar para abrir la vista directamente en el navegador durante desarrollo -->
+<nav class="header-actions" data-standalone-nav aria-label="Principal">
+  <a class="nav-link" href="#/dashboard"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+  <a class="nav-link active" href="#/tareas"><i class="fa-solid fa-list-check"></i> Tareas</a>
+  <a class="nav-link" href="#/calendario"><i class="fa-solid fa-calendar-days"></i> Calendario</a>
+  <a class="nav-link" href="#/notas"><i class="fa-solid fa-note-sticky"></i> Notas</a>
+  <a class="nav-link" href="#/archivos"><i class="fa-solid fa-folder-open"></i> Archivos</a>
+  <a class="nav-link" href="#/pizarra"><i class="fa-solid fa-chalkboard"></i> Pizarra</a>
+  <a class="nav-link" href="#/perfil"><i class="fa-solid fa-user"></i> Perfil</a>
+</nav>
+
+<section aria-labelledby="tasks-title" class="grid" style="gap:16px">
+  <!-- Header / Stats -->
+  <header class="card" role="region" aria-label="Resumen de estudio">
+    <div class="header" style="display:flex;justify-content:space-between;align-items:center;gap:16px">
+      <div class="header-left" style="display:flex;align-items:center;gap:12px">
+        <div class="logo" style="display:flex;align-items:center;gap:10px">
+          <div class="logo-icon" aria-hidden="true"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h2 id="tasks-title" class="section-title">Tareas</h2>
+        </div>
+      </div>
+
+      <div class="study-stats" style="display:flex;gap:16px;align-items:center">
+        <div class="stat-item">
+          <div class="stat-value" id="totalTasks">0</div>
+          <div class="stat-label">Total</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="completedTasks">0</div>
+          <div class="stat-label">Completadas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="studyStreak">0</div>
+          <div class="stat-label">Días de racha</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Pomodoro -->
+  <section class="pomodoro-widget card" role="region" aria-label="Temporizador Pomodoro">
+    <div class="pomodoro-header" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+      <div class="pomodoro-title" style="display:flex;align-items:center;gap:8px;font-weight:600">
+        <i class="fa-solid fa-clock"></i> Pomodoro
+      </div>
+      <label class="sr-only" for="pomodoroPreset">Duración</label>
+      <select id="pomodoroPreset" class="form-select" style="width: 160px;">
+        <option value="25">25 minutos</option>
+        <option value="50">50 minutos</option>
+        <option value="10">10 minutos</option>
+        <option value="5">5 min (descanso)</option>
+      </select>
+    </div>
+
+    <div class="pomodoro-timer" id="pomodoroTimer">25:00</div>
+    <div class="pomodoro-controls" style="display:flex;justify-content:center;gap:10px">
+      <button class="timer-btn primary" id="startTimer"><i class="fa-solid fa-play"></i> Iniciar</button>
+      <button class="timer-btn" id="pauseTimer"><i class="fa-solid fa-pause"></i> Pausar</button>
+      <button class="timer-btn" id="resetTimer"><i class="fa-solid fa-rotate-right"></i> Reiniciar</button>
+    </div>
+  </section>
+
+  <!-- Filtros -->
+  <section class="filters-panel card" role="region" aria-label="Filtros de estudio">
+    <div class="filters-header" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div class="filters-title" style="font-weight:600;display:flex;align-items:center;gap:8px">
+        <i class="fa-solid fa-filter"></i> Filtros de Estudio
+      </div>
+    </div>
+
+    <div class="filter-chips" role="list" style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="filter-chip active" data-filter="all"       role="listitem"><i class="fa-solid fa-grid-2"></i> Todas</button>
+      <button class="filter-chip"        data-filter="today"     role="listitem"><i class="fa-solid fa-calendar-day"></i> Hoy</button>
+      <button class="filter-chip"        data-filter="week"      role="listitem"><i class="fa-solid fa-calendar-week"></i> Esta semana</button>
+      <button class="filter-chip"        data-filter="pending"   role="listitem"><i class="fa-solid fa-hourglass-half"></i> Pendientes</button>
+      <button class="filter-chip"        data-filter="completed" role="listitem"><i class="fa-solid fa-check-circle"></i> Completadas</button>
+      <button class="filter-chip"        data-filter="high"      role="listitem"><i class="fa-solid fa-fire"></i> Alta prioridad</button>
+      <button class="filter-chip"        data-filter="overdue"   role="listitem"><i class="fa-solid fa-triangle-exclamation"></i> Vencidas</button>
+    </div>
+  </section>
+
+  <!-- Grid de tareas -->
+  <section class="card" role="region" aria-label="Listado de tareas">
+    <div class="tasks-container" id="tasksContainer"></div>
+  </section>
+</section>
+
+<!-- FAB -->
+<button class="fab" id="addTaskBtn" aria-label="Agregar tarea"><i class="fa-solid fa-plus"></i></button>
+
+<!-- Modal -->
+<div class="modal" id="taskModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+  <div class="modal-content">
+    <header class="modal-header">
+      <h2 class="modal-title" id="modalTitle">Nueva tarea de estudio</h2>
+      <button class="modal-close" id="modalClose" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+    </header>
+
+    <div class="modal-body">
+      <form id="taskForm">
+        <input type="hidden" id="taskId" />
+
+        <div class="form-group">
+          <label class="form-label" for="taskTitle">Título</label>
+          <input type="text" class="form-input" id="taskTitle" placeholder="Ej: Estudiar Capítulo 5 de Física" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="taskDescription">Descripción</label>
+          <textarea class="form-textarea" id="taskDescription" placeholder="Detalles adicionales sobre la tarea..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="taskCategory">Materia/Categoría</label>
+            <select class="form-select" id="taskCategory">
+              <option value="Matemáticas">Matemáticas</option>
+              <option value="Física">Física</option>
+              <option value="Química">Química</option>
+              <option value="Programación">Programación</option>
+              <option value="Idiomas">Idiomas</option>
+              <option value="Historia">Historia</option>
+              <option value="Literatura">Literatura</option>
+              <option value="OmniMarketing">OmniMarketing</option>
+              <option value="General">General</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="taskPriority">Prioridad</label>
+            <select class="form-select" id="taskPriority">
+              <option value="low">Baja</option>
+              <option value="medium" selected>Media</option>
+              <option value="high">Alta</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="taskDueDate">Fecha de entrega</label>
+            <input type="date" class="form-input" id="taskDueDate" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="taskDueTime">Hora</label>
+            <input type="time" class="form-input" id="taskDueTime" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="tagInput">Etiquetas</label>
+          <input type="text" class="form-input" id="tagInput" placeholder="Agregar etiqueta y presionar Enter" />
+          <div class="tags-input" id="tagsContainer"></div>
+        </div>
+      </form>
+    </div>
+
+    <footer class="modal-footer">
+      <button class="btn btn-secondary" id="modalCancel"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+      <button class="btn btn-primary" id="modalSave"><i class="fa-solid fa-floppy-disk"></i> Guardar tarea</button>
+    </footer>
+  </div>
+</div>
+
+<!-- Notificaciones -->
+<div id="notificationContainer" aria-live="polite" aria-atomic="true"></div>
