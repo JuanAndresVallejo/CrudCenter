@@ -50,6 +50,62 @@
   <!-- JS principal -->
   <script type="module" src="./assets/js/main.js"></script>
 
+  <!-- MINI CALENDARIO WIDGET PARA DASHBOARD -->
+  <section class="dashboard-calendar-widget">
+      <div class="widget-header">
+          <div class="widget-title">
+              <div class="widget-title-icon">
+                  <i class="fas fa-calendar"></i>
+              </div>
+              <span>Calendario</span>
+          </div>
+          <!-- cambiar esta parte de aqui para poder que navegue correctamente  -->
+          <a href="/calendar" class="widget-link" onclick="navigateToCalendar(event)">
+              Ver completo
+              <i class="fas fa-arrow-right" style="font-size: 10px;"></i>
+          </a>
+      </div>
+
+      <div class="widget-month-nav">
+          <button class="widget-nav-btn" id="widgetPrevMonth">
+              <i class="fas fa-chevron-left"></i>
+          </button>
+          <span class="widget-month-text" id="widgetMonthText">Diciembre 2024</span>
+          <button class="widget-nav-btn" id="widgetNextMonth">
+              <i class="fas fa-chevron-right"></i>
+          </button>
+      </div>
+
+      <div class="widget-calendar-grid" id="widgetCalendarGrid">
+          <!-- Se llenará con JavaScript -->
+      </div>
+
+      <div class="widget-today-events">
+          <div class="widget-events-title">
+              <span id="widgetSelectedDateText">Hoy</span>
+              <span class="widget-events-count" id="widgetEventsCount">0 eventos</span>
+          </div>
+          <div class="widget-event-list" id="widgetEventList">
+              <!-- Se llenará con JavaScript -->
+          </div>
+      </div>
+
+      <div class="widget-stats">
+          <div class="widget-stat">
+              <span class="widget-stat-value" id="widgetMonthEvents">0</span>
+              <span class="widget-stat-label">Este mes</span>
+          </div>
+          <div class="widget-stat">
+              <span class="widget-stat-value" id="widgetWeekEvents">0</span>
+              <span class="widget-stat-label">Esta semana</span>
+          </div>
+          <div class="widget-stat">
+              <span class="widget-stat-value" id="widgetPendingTasks">0</span>
+              <span class="widget-stat-label">Pendientes</span>
+          </div>
+      </div>
+  </section>
+
   <noscript>
     <div style="padding:16px;max-width:1100px;margin:16px auto">
       Necesitas habilitar JavaScript para usar Center.
