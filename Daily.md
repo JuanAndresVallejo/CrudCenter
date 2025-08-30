@@ -1,4 +1,4 @@
-# CrudCenter - Daily
+# Center - Daily
 
 ## Semana 1 (13-15 Agosto)
 ### 13-14 Agosto
@@ -6,7 +6,7 @@
 
 ### 15 Agosto
 - Elección del proyecto 'Espacio de trabajo para aprendizaje autónomo': Selección tras evaluar viabilidad, impacto y alineación con los intereses del equipo.
-- Elección de nombre: **CrudCenter** (nombre provisional, sujeto a cambios según evolución del proyecto).
+- Elección de nombre: **Center** (nombre provisional, sujeto a cambios según evolución del proyecto).
 - Inicio de definición de funcionalidades (features): Identificación inicial de las principales características del proyecto: sistema de gestión de tareas, creación de notas, integración de calendario, entre otros.
 
 ## Semana 2 (19-22 Agosto)
@@ -48,3 +48,26 @@
 ### 26 Agosto
 - Funcionalidades de archivos **Canceladas**: Después de revisión de viabilidad técnica y un análisis de la carga del proyecto, se decidió cancelar las funcionalidades de gestión y conversión de archivos por la complejidad que agregaban sin un valor claro para el MVP (Minimum Viable Product).
 - Revisión errores en integración actualSe revisaron los bugs y problemas de integración que surgieron tras la unión de las funcionalidades y el código base. Se trabajó en la solución de estos problemas para asegurar una experiencia fluida para el usuario final.
+
+### 27 Agosto
+- Integración de demás funcionalidades:
+    * Tareas.
+    * Calendario.
+    * Notas.
+    * Foro.
+- Inicio Preparación de Documentación:
+    * Manual de usuario.
+    * Documentación Técnica.
+
+### 28 Agosto
+- Testing de todo el proyecto: Revisión exhaustiva de cada módulo y funcionalidad.
+- Solución de bugs: Corrección de errores encontrados en la integración y pruebas.
+- Diseño de Pitch comercial: Creación del guion y estructura de la presentación para el cliente/inversores.
+
+### 29 Agosto
+- Finalización integración de funcionalidades: Ajustes finales para tener el sistema cohesionado.
+- Inclusión de nuevas funcionalidades:
+    * Roadmap: Planificación visual de metas y próximas fases de estudio.
+    * Chat 1 a 1: Implementación de comunicación privada entre usuarios.
+- Creación y conexión de servidor de Discord: Espacio para la comunidad y soporte del proyecto.
+- Posible implementación de widgets personalizados: Exploración de elementos extra que mejoren la experiencia de usuario.
